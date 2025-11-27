@@ -18,7 +18,7 @@ pygame.mixer.init()
 som_win = pygame.mixer.Sound("ponto.mp3")
 
 tela_largura = 1400
-tela_altura = 900
+tela_altura = 800
 tela = pygame.display.set_mode((tela_largura, tela_altura))
 
 retangulo_largura = 24
@@ -55,12 +55,12 @@ bola_velocidade_y2 = 5
 bola2 = pygame.Rect(bola_centro_x2, bola_centro_y2, bola_raio2, bola_raio2,)"""
 
 while True:
-    tela.fill((79, 76, 79))
+    tela.fill((0, 0, 0))
 
     pygame.draw.rect(tela, (225, 255, 225), linha)
     pygame.draw.rect(tela, (143, 0, 225), retangulo_1)
     pygame.draw.rect(tela, (143, 0, 225), retangulo_2)
-    pygame.draw.rect(tela, (0, 255, 247), bola,)
+    pygame.draw.rect(tela, (225, 225, 225), bola,)
 
     pontos_1_texto = fonte.render("Player 1: {}".format(pontos_1), True, (255, 130, 243))
     pontos_2_texto = fonte.render("Player 2: {}".format(pontos_2), True, (0, 80, 240))
@@ -102,10 +102,10 @@ while True:
             som_win.play()
 
     keys = pygame.key.get_pressed()
-    if keys[pygame.K_RIGHT]:
+    if keys[pygame.K_UP]:
         if retangulo_1.top >= 0:
             retangulo_1_centro_y -= retangulo_velocidade
-    if keys[pygame.K_LEFT]:
+    if keys[pygame.K_DOWN]:
         if retangulo_1.bottom <= tela_altura:
             retangulo_1_centro_y += retangulo_velocidade
     if keys[pygame.K_w]:
@@ -124,4 +124,3 @@ while True:
 
     pygame.display.flip()
     clock.tick(velocidade_tick)
-
